@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 11-may-2018 13:18:58 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="modelo.Prestamos" table="prestamos" catalog="biblioteca" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="libros" class="modelo.Libros" fetch="select">
+            <column name="id_libro" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuarios" class="modelo.Usuarios" fetch="select">
+            <column name="id_usuario" not-null="true" />
+        </many-to-one>
+        <property name="fechaPrestamo" type="date">
+            <column name="fecha_prestamo" length="10" not-null="true" />
+        </property>
+        <property name="fechaLimite" type="date">
+            <column name="fecha_limite" length="10" not-null="true" />
+        </property>
+        <property name="entregado" type="boolean">
+            <column name="entregado" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
